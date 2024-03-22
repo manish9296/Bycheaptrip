@@ -6,7 +6,7 @@
         header("Location:../index");
     }    
 ?>
-<?php include("header.php");
+<?php include("./incluede/header.php");
 $_SESSION["id"] = "1";
 
 if (count($_POST) > 0) {
@@ -105,4 +105,4 @@ return output;
 }
 </script>
 <div id="styleSelector">
-<?php include("footer.php")?>
+<?php include("./incluede/footer.php")?>

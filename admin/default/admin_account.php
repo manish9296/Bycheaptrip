@@ -6,7 +6,7 @@
         header("Location:../index");
     }    
 ?>
-<?php include("header.php")?>
+<?php include("./incluede/header.php")?>
       <!-- Main Content -->
       <div class="adminx-content">
         <div class="adminx-main-content">
@@ -70,4 +70,4 @@
 ++$a;
 }
 ?>  
-<?php include("footer.php")?>
+<?php include("./incluede/footer.php")?>

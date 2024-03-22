@@ -6,7 +6,7 @@ if (!isset($_SESSION["userid"])) {
 }
 ?>
 <?php $page = "customer";
-include("header.php") ?>
+include("./incluede/header.php") ?>
 <!-- Main Content -->
 <style>
     .form-row {
@@ -204,7 +204,7 @@ include("header.php") ?>
 
                         </div>
                     </div>
-                    <?php include("footer.php") ?>
+                    <?php include("./incluede/footer.php") ?>
                     <script>
                         $(document).ready(function() {
                             // Add form row

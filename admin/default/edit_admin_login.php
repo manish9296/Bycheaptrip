@@ -62,7 +62,7 @@ if(isset($_POST['upload'])){
    } 
 }
 ?>
-<?php include("header.php")?>
+<?php include("./incluede/header.php")?>
 <!-- Main Content -->
 <div class="adminx-content">
         <div class="adminx-main-content">
@@ -96,4 +96,4 @@ if(isset($_POST['upload'])){
             </form>
             </div>
          </div>
-<?php include("footer.php")?>
+<?php include("./incluede/footer.php")?>

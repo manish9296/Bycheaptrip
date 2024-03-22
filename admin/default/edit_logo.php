@@ -60,7 +60,7 @@ if(isset($_POST['upload'])){
    } 
 }
 ?>
-<?php $page='setting'; include("header.php")?>
+<?php $page='setting'; include("./incluede/header.php")?>
 <!-- Main Content -->
 <div class="adminx-content">
         <div class="adminx-main-content">
@@ -98,4 +98,4 @@ document.getElementById("paragraph").onkeypress = function(e) {
         return false;
 };
 </script>
-<?php include("footer.php")?>
+<?php include("./incluede/footer.php")?>

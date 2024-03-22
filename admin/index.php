@@ -31,7 +31,7 @@ if(isset($_POST['login']))
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <title>Administor of Ample Educational Society</title>
+  <title>Administor of Bycheaptrip Travels</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 

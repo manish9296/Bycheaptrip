@@ -6,7 +6,7 @@
         header("Location:../index");
     }    
 ?>
-<?php $page="setting"; include("header.php")?>
+<?php $page="setting"; include("./incluede/header.php")?>
 <!-- Main Content -->
 <div class="adminx-content">
         <div class="adminx-main-content">

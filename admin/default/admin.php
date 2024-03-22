@@ -54,7 +54,7 @@ if (($_SESSION["userid"] == "")) {
   }
 </style>
 <?php $page = 'home';
-include("header.php") ?>
+include("./incluede/header.php") ?>
 <!-- adminx-content-aside -->
 <div class="adminx-content">
   <!-- <div class="adminx-aside">
@@ -176,4 +176,4 @@ include("header.php") ?>
 </div>
 </div>
 </div>
-<?php include("footer.php"); ?>
+<?php include("./incluede/footer.php"); ?>

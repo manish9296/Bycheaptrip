@@ -1,5 +1,4 @@
 <?php
-
 $conn = mysqli_connect('localhost','root','','bycheap');
 mysqli_select_db($conn,"bycheap");
 // Check connection
