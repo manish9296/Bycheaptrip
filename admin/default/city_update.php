@@ -11,24 +11,6 @@ $sq = "select * from cities where city_id='$city_id'";
 $q = mysqli_query($conn, $sq);
 $fet = mysqli_fetch_assoc($q);
 
-// if (isset($_POST['submit'])) {
-//     $city_name = $_POST["city_name"];
-//     $sq1 = "UPDATE cities SET city_name='$city_name' where city_id='$city_id'";
-
-//     if (mysqli_query($conn, $sq1)) {
-//         echo '<script language="javascript">';
-//         echo 'alert("Your Content successfully Updated");';
-//         echo 'window.location.href="city_all";';
-//         echo '</script>';
-//     } else {
-//         echo '<script language="javascript">';
-//         echo 'alert("Your Content Is Not Updated");';
-//         echo 'window.location.href="city_all";';
-//         echo '</script>';
-//     }
-// }
-// ?>
-<?php
 // Check if form is submitted
 if (isset($_POST['submit'])) {
     $city_name = $_POST["city_name"];
@@ -41,7 +23,7 @@ if (isset($_POST['submit'])) {
         echo 'window.location.href="city_all";';
         echo '</script>';
     } else {
-        $sql = "UPDATE cities SET city_name='$city_name' WHERE id='$city_id'";
+        $sql = "UPDATE cities SET city_name='$city_name' WHERE city_id='$city_id'";
         if (mysqli_query($conn, $sql)) {
             echo '<script language="javascript">';
             echo 'alert("Your content has been successfully updated.");';
@@ -75,6 +57,7 @@ include("./incluede/header.php") ?>
                                     <label class="form-label" for="name">City Name</label>
                                     <input type="text" class="form-control" id="city_name" aria-describedby="name" placeholder="Enter City Name" name="city_name" value="<?php echo $fet['city_name'] ?>">
                                 </div>
+                                <input type="hidden" name="city_id" value="<?php echo $fet['city_id'] ?>">
                                 <button type="submit" class="btn btn-sm btn-block btn-primary" name="submit">Update</button>
                             </form>
                         </div>

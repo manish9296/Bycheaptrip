@@ -58,7 +58,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
     }
 }
 ?>
-
 <div class="adminx-content">
     <div class="adminx-main-content">
         <div class="container-fluid">

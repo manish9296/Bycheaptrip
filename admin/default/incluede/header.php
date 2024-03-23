@@ -73,7 +73,7 @@
                 <i data-feather="home"></i>
               </span>
               <span class="sidebar-nav-name">
-                Customers
+                City
               </span>
               <span class="sidebar-nav-end">
                 <i data-feather="chevron-right" class="nav-collapse-icon"></i>
@@ -82,12 +82,12 @@
             <ul class="sidebar-sub-nav collapse" id="example">
               <!-- slider start -->
               <li class="sidebar-nav-item">
-                <a href="../default/ad_customer" class="sidebar-nav-link">
+                <a href="../default/city_all" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     <i data-feather="plus-circle"></i>
                   </span>
                   <span class="sidebar-nav-name">
-                    Ad_Customers
+                    City All
                   </span>
                 </a>
               </li>
@@ -114,7 +114,7 @@
                 <i data-feather="user"></i>
               </span>
               <span class="sidebar-nav-name">
-                Final Customers
+                Hotel
               </span>
               <span class="sidebar-nav-end">
                 <i data-feather="chevron-right" class="nav-collapse-icon"></i>
@@ -122,16 +122,16 @@
             </a>
 
             <ul class="sidebar-sub-nav collapse" id="exampl_a">
-              <!-- <li class="sidebar-nav-item">
-                <a href="../default/ad_about" class="sidebar-nav-link">
+              <li class="sidebar-nav-item">
+                <a href="../default/hotel_all" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                   <i data-feather="plus-circle"></i>
                   </span>
                   <span class="sidebar-nav-name">
-                    Add About
+                    Hotel All
                   </span>
                 </a>
-              </li> -->
+              </li>
               <!-- <li class="sidebar-nav-item">
                 <a href=../default/all_about class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
@@ -149,29 +149,29 @@
           <li class="sidebar-nav-item">
             <a class=" sidebar-nav-link <?php if ($page == 'our') {
                                           echo 'active';
-                                        } ?> collapsed" data-toggle="collapse" href="#examp" aria-expanded="false" aria-controls="examp">
+                                  } ?> collapsed" data-toggle="collapse" href="#examp" aria-expanded="false" aria-controls="examp">
               <span class="sidebar-nav-icon">
                 <i data-feather="pie-chart"></i>
               </span>
               <span class="sidebar-nav-name">
-                Confirmation list
+                hotel Categories
               </span>
               <span class="sidebar-nav-end">
                 <i data-feather="chevron-right" class="nav-collapse-icon"></i>
               </span>
             </a>
             <ul class="sidebar-sub-nav collapse" id="examp">
-              <!-- <li class="sidebar-nav-item">
-                <a href="../default/ad_our_initatives" class="sidebar-nav-link">
+             <li class="sidebar-nav-item">
+                <a href="../default/hotel_category_add" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     <i data-feather="plus-circle"></i>
                   </span>
                   <span class="sidebar-nav-name">
-                    Add Our_Initatives
+                    Hotel Categories
                   </span>
                 </a>
               </li>
-              <li class="sidebar-nav-item">
+              <!--  <li class="sidebar-nav-item">
                 <a href="../default/all_our_initatives" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     <i data-feather="edit-3"></i>
@@ -189,30 +189,30 @@
           <!-- part News end -->
           <!-- part6  TEAM -->
           <li class="sidebar-nav-item">
-            <a class=" sidebar-nav-link <?php if ($page == 'team') {
+            <a class=" sidebar-nav-link <?php if ($page == 'transport') {
                                           echo 'active';
                                         } ?> collapsed" data-toggle="collapse" href="#exa_team" aria-expanded="false" aria-controls="exa_team">
               <span class="sidebar-nav-icon">
                 <i data-feather="users"></i>
               </span>
               <span class="sidebar-nav-name">
-                Payments
+                Transport
               </span>
               <span class="sidebar-nav-end">
                 <i data-feather="chevron-right" class="nav-collapse-icon"></i>
               </span>
             </a>
             <ul class="sidebar-sub-nav collapse" id="exa_team">
-              <!-- <li class="sidebar-nav-item">
-                <a href="../default/ad_team" class="sidebar-nav-link">
+              <li class="sidebar-nav-item">
+                <a href="../default/transport_all" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     <i data-feather="plus-circle"></i>
                   </span>
                   <span class="sidebar-nav-name">
-                    Add Team Member
+                    Transport All
                   </span>
                 </a>
-              </li> -->
+              </li>
               <!-- <li class="sidebar-nav-item">
                 <a href="../default/all_team" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">

@@ -12,11 +12,9 @@ include("./incluede/header.php") ?>
     <div class="adminx-main-content">
         <div class="container-fluid">
             <!-- BreadCrumb -->
-
             <div class="pb-3">
                 <h1><b><i>City All</i></b></h1>
             </div>
-
             <div class="row">
                 <div class="col">
                     <div class="card mb-grid">
@@ -34,10 +32,10 @@ include("./incluede/header.php") ?>
                                             </label>
                                         </th>
                                         <!-- <th scope="col">#</th> -->
-                                        <th scope="col">#</th>
+                                        <!-- <th scope="col">#</th>
                                         <th scope="col">City</th>
                                         <th scope="col">Hotel</th>
-                                        <th scope="col">Actions</th>
+                                        <th scope="col">Actions</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -63,7 +61,7 @@ include("./incluede/header.php") ?>
                                             <td><?php echo $row['hotel_name'] ?></td>
                                             <td>
                                                 <a href="hotel_add"><button type="button" class="btn btn-primary waves-effect waves-light add">Add</button></a>
-                                                <a href="hotel_update?hotel_id=<?php echo $row['hotel_id']; ?>"><button type="button" class="btn btn-primary waves-effect waves-light add">Edit</button></a>
+<                                                <a href="hotel_update?hotel_id=<?php echo $row['hotel_id']; ?>"><button type="button" class="btn btn-primary waves-effect waves-light add">Edit</button></a>
                                             </td>
                                         <tr>
                                         <?php
