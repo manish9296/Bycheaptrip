@@ -13,7 +13,7 @@ include("./incluede/header.php") ?>
         <div class="container-fluid">
             <!-- BreadCrumb -->
             <div class="pb-3">
-                <h1><b><i>Transport All</i></b></h1>
+                <h1><b><i>Sightseeing All</i></b></h1>
             </div>
             <div class="row">
                 <div class="col">
@@ -34,16 +34,16 @@ include("./incluede/header.php") ?>
                                         <!-- <th scope="col">#</th> -->
                                         <th scope="col">#</th>
                                         <th scope="col">City</th>
-                                        <th scope="col">Transport From To</th>
+                                        <th scope="col">SightSeeing Details</th>
                                         <th scope="col">Prices</th>
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $query = "SELECT transport.trans_id, transport.transport_name,transport.prices,transport.tcity_id,cities.city_name
-                                    FROM transport
-                                    JOIN cities ON transport.tcity_id = cities.city_id
+                                    $query = "SELECT sightseeing.sight_id, sightseeing.sight_name,sightseeing.prices,sightseeing.tsight_id,cities.city_name
+                                    FROM sightseeing
+                                    JOIN cities ON sightseeing.tsight_id = cities.city_id
                                     ORDER BY cities.city_name ASC";
                                     $res = mysqli_query($conn, $query);
                                     $a = 1;
@@ -59,11 +59,11 @@ include("./incluede/header.php") ?>
                                             <td><?php echo $a ?></td>
 
                                             <td><?php echo $row['city_name'] ?></td>
-                                            <td><?php echo $row['transport_name'] ?></td>
+                                            <td><?php echo $row['sight_name'] ?></td>
                                             <td><?php echo $row['prices'] ?></td>
                                             <td>
-                                                <a href="transport_add"><button type="button" class="btn btn-primary waves-effect waves-light add">Add</button></a>
-                                               <a href="transport_update?trans_id=<?php echo $row['trans_id']; ?>"><button type="button" class="btn btn-primary waves-effect waves-light add">Update</button></a>
+                                                <a href="sightseeing_add"><button type="button" class="btn btn-primary waves-effect waves-light add">Add</button></a>
+                                               <a href="sightseeing_update?sight_id=<?php echo $row['sight_id']; ?>"><button type="button" class="btn btn-primary waves-effect waves-light add">Update</button></a>
                                             </td>
                                         <tr>
                                         <?php

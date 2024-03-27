@@ -27,10 +27,6 @@ include("./incluede/header.php") ?>
     }
 </style>
 <?php
-// Assuming you have already established a database connection
-// $conn = mysqli_connect("localhost", "username", "password", "database");
-
-// Function to sanitize input
 function sanitize_input($conn, $data)
 {
     $data = trim($data);
@@ -39,32 +35,30 @@ function sanitize_input($conn, $data)
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    $hotel_id = $_POST['hotel_id'];
-    $hotel_name = sanitize_input($conn, $_POST['hotel_name']);
-    $hcity_id = sanitize_input($conn, $_POST['hcity_id']);
+    $trans_id = $_POST['trans_id'];
+    $transport_name = sanitize_input($conn, $_POST['transport_name']);
 
-    // Perform input validation here if needed
+    $tcity_id = sanitize_input($conn, $_POST['tcity_id']);
 
-    // Update the hotel in the database
-    $update_query = "UPDATE hotels SET hotel_name = '$hotel_name', hcity_id = '$hcity_id' WHERE hotel_id = $hotel_id";
+    $prices = sanitize_input($conn, $_POST['prices']);
+    $update_query = "UPDATE transport SET transport_name = '$transport_name',prices = '$prices', tcity_id = '$tcity_id' WHERE trans_id = $trans_id";
     if (mysqli_query($conn, $update_query)) {
-        echo "<script>alert('Hotel updated successfully.');
-        window.location.href = 'hotel_all';
+        echo "<script>alert(' updated successfully.');
+        window.location.href = 'transport_all';
         </script>";
     } else {
         echo "Error: " . mysqli_error($conn);
     }
-} elseif (isset($_GET['hotel_id'])) {
-    $hotel_id = $_GET['hotel_id'];
+} elseif (isset($_GET['trans_id'])) {
+    $trans_id = $_GET['trans_id'];
 
-    // Retrieve hotel details from the database
-    $query = "SELECT * FROM hotels WHERE hotel_id = $hotel_id";
+    // Retrieve trans details from the database
+    $query = "SELECT * FROM transport WHERE trans_id = $trans_id";
     $result = mysqli_query($conn, $query);
-    $hotel = mysqli_fetch_assoc($result);
+    $trans = mysqli_fetch_assoc($result);
     mysqli_free_result($result);
 } else {
-    // Redirect to the page where hotels are listed if no hotel ID is provided
-    header("Location: hotel_all");
+    header("Location: transport_all");
     exit;
 }
 ?>
@@ -72,28 +66,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     <div class="adminx-main-content">
         <div class="container-fluid">
             <div class="pb-3">
-                <h1><b><i>Hotel Details</i></b></h1>
+                <h1><b><i>Transport Details</i></b></h1>
             </div>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="card mb-grid">
                         <div class="card-body collapse show" id="card1">
                             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                                <input type="hidden" name="hotel_id" value="<?php echo $hotel['hotel_id']; ?>">
+                                <input type="hidden" name="trans_id" value="<?php echo $trans['trans_id']; ?>">
                                 <div class="form-group">
-                                    <label class="form-label" for="hotel name">Hotel Name</label>
-                                    <input type="text" class="form-control" id="hotel_name" aria-describedby="name" placeholder="Enter Hotel Name" name="hotel_name" value="<?php echo htmlspecialchars($hotel['hotel_name']); ?>">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label" for="hotel_name">City Name</label>
-                                    <select class="form-control" id="city_id" name="hcity_id">
+                                    <label class="form-label" for="trans_name">City Name</label>
+                                    <select class="form-control" id="city_id" name="tcity_id">
                                         <option value="disabled">Select City</option>
                                         <?php
                                         $query = "SELECT * FROM cities";
                                         $result = mysqli_query($conn, $query);
                                         if ($result && mysqli_num_rows($result) > 0) {
                                             while ($row = mysqli_fetch_assoc($result)) {
-                                                $selected = ($row['city_id'] == $hotel['hcity_id']) ? 'selected' : '';
+                                                $selected = ($row['city_id'] == $trans['tcity_id']) ? 'selected' : '';
                                                 echo "<option value='" . $row['city_id'] . "' $selected>" . $row['city_name'] . "</option>";
                                             }
                                         }
@@ -101,7 +91,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                                         ?>
                                     </select>
                                 </div>
-                                <button type="submit" class="btn btn-sm btn-block btn-primary" name="submit">Submit</button>
+                                <div class="form-group">
+                                    <label class="form-label" for="trans name">Transport Details </label>
+                                    <input type="text" class="form-control" id="trans_name" aria-describedby="name" placeholder="Enter transport Datails" name="transport_name" value="<?php echo htmlspecialchars($trans['transport_name']); ?>" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="trans name">Prices Details </label>
+                                    <input type="text" class="form-control" id="prices" aria-describedby="name" placeholder="Enter prices Datails" name="prices" value="<?php echo htmlspecialchars($trans['prices']); ?>" required>
+                                </div>
+                                <button type="submit" class="btn btn-sm btn-block btn-primary" name="submit">Upadte</button>
                             </form>
                         </div>
                     </div>

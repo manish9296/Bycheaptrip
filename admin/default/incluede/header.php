@@ -226,6 +226,44 @@
             </ul>
           </li>
           <!-- part donate end -->
+          <li class="sidebar-nav-item">
+            <a class=" sidebar-nav-link <?php if ($page == 'transport') {
+                                          echo 'active';
+                                        } ?> collapsed" data-toggle="collapse" href="#exa_team99" aria-expanded="false" aria-controls="exa_team99">
+              <span class="sidebar-nav-icon">
+                <i data-feather="users"></i>
+              </span>
+              <span class="sidebar-nav-name">
+                SightSeeing
+              </span>
+              <span class="sidebar-nav-end">
+                <i data-feather="chevron-right" class="nav-collapse-icon"></i>
+              </span>
+            </a>
+            <ul class="sidebar-sub-nav collapse" id="exa_team99">
+              <li class="sidebar-nav-item">
+                <a href="../default/sightseeing_all" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    <i data-feather="plus-circle"></i>
+                  </span>
+                  <span class="sidebar-nav-name">
+                    SightSeeing All
+                  </span>
+                </a>
+              </li>
+              <!-- <li class="sidebar-nav-item">
+                <a href="../default/all_team" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    <i data-feather="edit-3"></i>
+                  </span>
+                  <span class="sidebar-nav-name">
+                    All Team
+                  </span>
+                </a>
+              </li> -->
+            </ul>
+          </li>
+          <!-- part donate end -->
 
           <!-- part News end -->
           <!-- part7  Setting -->

@@ -12,9 +12,11 @@ include("./incluede/header.php") ?>
     <div class="adminx-main-content">
         <div class="container-fluid">
             <!-- BreadCrumb -->
+
             <div class="pb-3">
-                <h1><b><i>Transport All</i></b></h1>
+                <h1><b><i>Hotel Category & Packages Details</i></b></h1>
             </div>
+
             <div class="row">
                 <div class="col">
                     <div class="card mb-grid">
@@ -34,17 +36,24 @@ include("./incluede/header.php") ?>
                                         <!-- <th scope="col">#</th> -->
                                         <th scope="col">#</th>
                                         <th scope="col">City</th>
-                                        <th scope="col">Transport From To</th>
-                                        <th scope="col">Prices</th>
+                                        <th scope="col">Hotel</th>
+                                        <th scope="col">Hotel Package</th>
+                                        <th scope="col">Hotel Prices</th>
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $query = "SELECT transport.trans_id, transport.transport_name,transport.prices,transport.tcity_id,cities.city_name
-                                    FROM transport
-                                    JOIN cities ON transport.tcity_id = cities.city_id
-                                    ORDER BY cities.city_name ASC";
+                                    // $query = "SELECT hotels.hotel_id, hotels.hotel_name, cities.city_name
+                                    // FROM hotels
+                                    // JOIN cities ON hotels.hcity_id = cities.city_id
+                                    // ORDER BY cities.city_name ASC";
+                                    $query = "SELECT hotels.hotel_id, hotels.hotel_name, cities.city_name,hotel_categories.hcategory_id, hotel_categories.category_name, hotel_categories.prices
+          FROM hotels
+          JOIN cities ON hotels.hcity_id = cities.city_id
+          JOIN hotel_categories ON hotels.hotel_id = hotel_categories.hc_id
+          ORDER BY cities.city_name ASC";
+
                                     $res = mysqli_query($conn, $query);
                                     $a = 1;
                                     while ($row = mysqli_fetch_assoc($res)) {
@@ -59,11 +68,13 @@ include("./incluede/header.php") ?>
                                             <td><?php echo $a ?></td>
 
                                             <td><?php echo $row['city_name'] ?></td>
-                                            <td><?php echo $row['transport_name'] ?></td>
+                                            <td><?php echo $row['hotel_name'] ?></td>
+                                            <td><?php echo $row['category_name'] ?></td>
                                             <td><?php echo $row['prices'] ?></td>
+                                            <!-- <td><?php echo $row['hcategory_id'] ?></td> -->
                                             <td>
-                                                <a href="transport_add"><button type="button" class="btn btn-primary waves-effect waves-light add">Add</button></a>
-                                               <a href="transport_update?trans_id=<?php echo $row['trans_id']; ?>"><button type="button" class="btn btn-primary waves-effect waves-light add">Update</button></a>
+                                                <a href="hotel_category_add"><button type="button" class="btn btn-primary waves-effect waves-light add">Add</button></a>
+                                                <a href="hotel_category_update?hcategory_id=<?php echo $row['hcategory_id']; ?>"><button type="button" class="btn btn-primary waves-effect waves-light add">Update</button></a>
                                             </td>
                                         <tr>
                                         <?php

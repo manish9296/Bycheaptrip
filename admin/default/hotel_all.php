@@ -63,7 +63,7 @@ include("./incluede/header.php") ?>
                                             <td><?php echo $row['hotel_name'] ?></td>
                                             <td>
                                                 <a href="hotel_add"><button type="button" class="btn btn-primary waves-effect waves-light add">Add</button></a>
-                                                <a href="hotel_update?hotel_id=<?php echo $row['hotel_id']; ?>"><button type="button" class="btn btn-primary waves-effect waves-light add">Edit</button></a>
+                                                <a href="hotel_update?hotel_id=<?php echo $row['hotel_id']; ?>"><button type="button" class="btn btn-primary waves-effect waves-light add">Update</button></a>
                                             </td>
                                         <tr>
                                         <?php
