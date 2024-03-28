@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                                 <input type="hidden" name="sight_id" value="<?php echo $trans['sight_id']; ?>">
                                 <div class="form-group">
                                     <label class="form-label" for="trans_name">City Name</label>
-                                    <select class="form-control" id="city_id" name="tcity_id">
+                                    <select class="form-control" id="city_id" name="tsight_id">
                                         <option value="disabled">Select City</option>
                                         <?php
                                         $query = "SELECT * FROM cities";
