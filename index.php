@@ -131,183 +131,7 @@
         }
     </style>
 </head>
-<?php
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     // Validate form fields
-//     $name = trim($_POST["name"]);
-//     $gender = $_POST["gender"];
-//     $email = trim($_POST["email"]);
-//     $phone = trim($_POST["phone"]);
-//     $password = $_POST["password"];
-//     $cpassword = $_POST["cpassword"];
 
-//     $errors = [];
-
-//     // Name validation
-//     if (empty($name)) {
-//         $errors["name"] = "Please enter your name.";
-//     }
-//     if (empty($gender)) {
-//         $errors["gender"] = "Please select your gender.";
-//     }
-//     if (empty($email)) {
-//         $errors["email"] = "Please enter your email.";
-//     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-//         $errors["email"] = "Invalid email format.";
-//     }
-//     if (empty($phone)) {
-//         $errors["phone"] = "Please enter your phone number.";
-//     } elseif (strlen($phone) < 10 || strlen($phone) > 13) {
-//         $errors["phone"] = "Phone number must be between 10 and 13 characters.";
-//     }
-//     if (empty($password)) {
-//         $errors["password"] = "Please enter a password.";
-//     }
-
-//     if ($password != $cpassword) {
-//         $errors["cpassword"] = "Passwords do not match.";
-//     }
-
-//     if (empty($errors)) {
-//         // Connect to database
-//         include('admin/connection.php');
-
-//         // Check if email is unique
-//         $sql_email_check = "SELECT * FROM users WHERE email='$email'";
-//         $result_email_check = $conn->query($sql_email_check);
-//         if ($result_email_check->num_rows > 0) {
-//             $errors["email"] = "Email already exists.";
-//         }
-
-//         // Check if phone number is unique
-//         $sql_phone_check = "SELECT * FROM users WHERE phone='$phone'";
-//         $result_phone_check = $conn->query($sql_phone_check);
-//         if ($result_phone_check->num_rows > 0) {
-//             $errors["phone"] = "Phone number already exists.";
-//         }
-
-//         if (empty($errors)) {
-//             // Insert data into database
-//             $sql = "INSERT INTO users (name, gender, email, phone, password) VALUES ('$name', '$gender', '$email', '$phone', '$password')";
-
-//             if ($conn->query($sql) === TRUE) {
-//                 echo "<script>alert('Registered successfully. Please verify your account then login in 24 hours .');
-//                 window.location.href = 'login.php';
-//                 </script>";
-//             } else {
-//                 echo "<script>alert('Error: " . $sql . "<br>" . $conn->error . "');</script>";
-//             }
-//         } else {
-//             // Display errors
-//             echo "<script>";
-//             foreach ($errors as $error) {
-//                 echo "alert('$error');";
-//             }
-//             echo "</script>";
-//         }
-
-//         $conn->close();
-//     } else {
-//         // Display validation errors
-//         echo "<script>";
-//         foreach ($errors as $error) {
-//             echo "alert('$error');";
-//         }
-//         echo "</script>";
-//     }
-// }
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validate form fields
-    $name = trim($_POST["name"]);
-    $gender = $_POST["gender"];
-    $email = trim($_POST["email"]);
-    $phone = trim($_POST["phone"]);
-    $password = $_POST["password"];
-    $cpassword = $_POST["cpassword"];
-
-    $errors = [];
-
-    // Name validation
-    if (empty($name)) {
-        $errors["name"] = "Please enter your name.";
-    }
-    if (empty($gender)) {
-        $errors["gender"] = "Please select your gender.";
-    }
-    if (empty($email)) {
-        $errors["email"] = "Please enter your email.";
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors["email"] = "Invalid email format.";
-    }
-    if (empty($phone)) {
-        $errors["phone"] = "Please enter your phone number.";
-    } elseif (strlen($phone) < 10 || strlen($phone) > 13) {
-        $errors["phone"] = "Phone number must be between 10 and 13 characters.";
-    }
-    if (empty($password)) {
-        $errors["password"] = "Please enter a password.";
-    }
-
-    if ($password != $cpassword) {
-        $errors["cpassword"] = "Passwords do not match.";
-    }
-
-    if (empty($errors)) {
-        // Connect to database
-        include('admin/connection.php');
-
-        // Check if email is unique
-        $sql_email_check = "SELECT * FROM users WHERE email='$email'";
-        $result_email_check = $conn->query($sql_email_check);
-        if ($result_email_check->num_rows > 0) {
-            $errors["email"] = "Email already exists.";
-        }
-
-        // Check if phone number is unique
-        $sql_phone_check = "SELECT * FROM users WHERE phone='$phone'";
-        $result_phone_check = $conn->query($sql_phone_check);
-        if ($result_phone_check->num_rows > 0) {
-            $errors["phone"] = "Phone number already exists.";
-        }
-
-        if (empty($errors)) {
-            // Hash the password
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-            // Insert data into database
-            $sql = "INSERT INTO users (name, gender, email, phone, password) VALUES ('$name', '$gender', '$email', '$phone', '$hashed_password')";
-
-            if ($conn->query($sql) === TRUE) {
-                echo "<script>alert('Registered successfully. Please verify your account then login in 24 hours .');
-                window.location.href = 'login.php';
-                </script>";
-            } else {
-                echo "<script>alert('Error: " . $sql . "<br>" . $conn->error . "');</script>";
-            }
-        } else {
-            // Display errors
-            echo "<script>";
-            foreach ($errors as $error) {
-                echo "alert('$error');";
-            }
-            echo "</script>";
-        }
-
-        $conn->close();
-    } else {
-        // Display validation errors
-        echo "<script>";
-        foreach ($errors as $error) {
-            echo "alert('$error');";
-        }
-        echo "</script>";
-    } 
-}
-
-
-
-
-?>
 
 <body>
     <div class="container register">
@@ -379,55 +203,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </body>
 
 </html>
-<!-- <script>
-    $(document).ready(function() {
-        $("#registrationForm").submit(function(event) {
-            $(".error-message").text(""); // Clear previous error messages
-
-            var name = $("input[name='name']").val();
-            var gender = $("input[name='gender']:checked").val();
-            var email = $("input[name='email']").val();
-            var phone = $("input[name='phone']").val();
-            var password = $("input[name='password']").val();
-            var confirmPassword = $("input[name='cpassword']").val();
-
-            if (name.trim() === "") {
-                $("#name-error").text("Please enter your name.");
-                event.preventDefault();
-            }
-
-            if (gender === undefined) {
-                $("#gender-error").text("Please select your gender.");
-                event.preventDefault();
-            }
-
-            if (email.trim() === "") {
-                $("#email-error").text("Please enter your email.");
-                event.preventDefault();
-            }
-
-            if (phone.trim() === "") {
-                $("#phone-error").text("Please enter your phone number.");
-                event.preventDefault();
-            }
-
-            if (password.trim() === "") {
-                $("#password-error").text("Please enter a password.");
-                event.preventDefault();
-            }
-
-            if (confirmPassword.trim() === "") {
-                $("#cpassword-error").text("Please confirm your password.");
-                event.preventDefault();
-            }
-
-            if (password != confirmPassword) {
-                $("#cpassword-error").text("Passwords do not match.");
-                event.preventDefault();
-            }
-        });
-    });
-</script> -->
 <script>
     $(document).ready(function() {
         $("#registrationForm").submit(function(event) {
@@ -439,17 +214,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             var phone = $("input[name='phone']").val();
             var password = $("input[name='password']").val();
             var confirmPassword = $("input[name='cpassword']").val();
-
             if (name.trim() === "") {
                 $("#name-error").text("Please enter your name.");
                 event.preventDefault();
             }
-
             if (gender === undefined) {
                 $("#gender-error").text("Please select your gender.");
                 event.preventDefault();
             }
-
             if (email.trim() === "") {
                 $("#email-error").text("Please enter your email.");
                 event.preventDefault();

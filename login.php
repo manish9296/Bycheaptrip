@@ -131,39 +131,8 @@
         }
     </style>
 </head>
-<?php
-session_start();
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validate form fields
-    $email = trim($_POST["email"]);
-    $password = $_POST["password"];
 
-    // Connect to database
-    include('admin/connection.php');
 
-    // Check if user exists
-    $sql = "SELECT * FROM users WHERE email = '$email'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows == 1) {
-        // User found, verify password
-        $row = $result->fetch_assoc();
-        if (password_verify($password, $row['password'])) {
-            // Password is correct, set session variables and redirect
-            $_SESSION['user_id'] = $row['id'];
-            $_SESSION['email'] = $email;
-            header("Location: dashboard.php"); // Redirect to dashboard or any other page
-            exit();
-        } else {
-            $error = "Incorrect password";
-        }
-    } else {
-        $error = "User not found";
-    }
-
-    $conn->close();
-}
-?>
 
 
 <body>
@@ -202,7 +171,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </div>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
