@@ -131,9 +131,56 @@
         }
     </style>
 </head>
+<?php
+include('connection.php');
+session_start();
+if(isset($_POST['login'])) 
+{
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $query = "SELECT * FROM users WHERE email='$email' AND password = '$password'";
+    $run = mysqli_query($conn,$query);
+    $row = mysqli_fetch_assoc($run);
 
-
-
+    if(!$row)
+    {
+        ?>
+        <script>
+        alert('Username or Password not match !!');
+        window.open('login','_self');
+        </script>
+        <?php
+    }
+    else
+    {
+        if($row['status'] == 'active')
+        {
+            $usersID= $row['id']; 
+            $_SESSION['usersID'] = $usersID;
+            $_SESSION['userEmail'] = $email;
+            header('location:./users/dashboard');
+        }
+        elseif ($row['status'] == 'reject')
+        {
+            ?>
+            <script>
+            alert('Your account has been rejected. Please contact support for further assistance.');
+            window.open('login','_self');
+            </script>
+            <?php
+        }
+        else
+        {
+            ?>
+            <script>
+            alert('Your account is not yet verified. Please wait for verification. This may take up to 24 hours.');
+            window.open('login','_self');
+            </script>
+            <?php
+        }
+    }
+}
+?>
 
 <body>
     <div class="container register">
@@ -142,7 +189,7 @@
                 <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
                 <h3>Welcome</h3>
                 <p>BuyCheaptrip Travels!</p>
-                <button class="btnRegister btn "><a href="index">Register</a></button><br />
+                <button class="btnRegister btn "><a href="login">Register</a></button><br />
             </div>
             <div class="col-md-9 register-right">
                 <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
@@ -167,7 +214,7 @@
                                         <input type="password" class="form-control" placeholder="Password *" name="password" />
                                         <div class="error-message text-danger" id="password-error"></div>
                                     </div>
-                                    <input type="submit" class="btnRegister" value="Login" />
+                                    <input type="submit" class="btnRegister" value="Login" name="login" />
                                 </div>
                             </div>
                         </form>
@@ -182,7 +229,7 @@
 <script>
     $(document).ready(function() {
         $("#registrationForm").submit(function(event) {
-            $(".error-message").text(""); // Clear previous error messages
+            $(".error-message").text(""); 
             var email = $("input[name='email']").val();
             var password = $("input[name='password']").val();
 
