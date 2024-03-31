@@ -158,6 +158,12 @@ if(isset($_POST['login']))
             $usersID= $row['id']; 
             $_SESSION['usersID'] = $usersID;
             $_SESSION['userEmail'] = $email;
+            $_SESSION['name']= $row['name'];
+            $_SESSION['phone']= $row['phone'];
+            // $_SESSION['id']= $row['id'];
+            // echo $_SESSION['phone'];
+            // exit();
+            
             header('location:./users/dashboard');
         }
         elseif ($row['status'] == 'reject')

@@ -26,6 +26,7 @@ include("./incluede/header.php") ?>
         width: 200px;
     }
 </style>
+
 <div class="adminx-content">
     <div class="adminx-main-content">
         <div class="container-fluid">
@@ -60,25 +61,63 @@ include("./incluede/header.php") ?>
                                         <div class="form-row mx-1 ">
                                             <label for="city">City:</label>
                                             <select id="city" name="city">
-                                                <option value="newyork">New York</option>
+                                            <option value="desabled">Select City</option>
+                                                <?php
+                                                $query = "SELECT * FROM cities";
+                                                $result = mysqli_query($conn, $query);
+                                                if ($result && mysqli_num_rows($result) > 0) {
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                ?>
+                                                        <option value="<?php echo $row['city_id']; ?>">
+                                                            <?php echo $row['city_name']; ?></option>
+                                                <?php
+                                                    }
+                                                } else {
+                                                    echo '<option disabled>No city found</option>';
+                                                }
+                                                mysqli_free_result($result);
+                                                ?>
+                                                <!-- <option value="newyork">New York</option>
                                                 <option value="london">London</option>
-                                                <option value="paris">Paris</option>
+                                                <option value="paris">Paris</option> -->
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
                                             <label for="hotel">Hotel:</label>
                                             <select id="hotel" name="hotel">
-                                                <option value="hotel1">Hotel 1</option>
+                                                <!-- <option value="hotel1">Hotel 1</option>
                                                 <option value="hotel2">Hotel 2</option>
-                                                <option value="hotel3">Hotel 3</option>
+                                                <option value="hotel3">Hotel 3</option> -->
+                                                <option value="disabled">Select Hotel</option>
+                                        <?php
+                                        $query = "SELECT * FROM hotels";
+                                        $result = mysqli_query($conn, $query);
+                                        if ($result && mysqli_num_rows($result) > 0) {
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                        ?>
+                                                <option value="<?php echo $row['hotel_id']; ?>">
+                                                    <?php echo $row['hotel_name']; ?></option>
+
+                                        <?php
+                                            }
+                                        } else {
+                                            echo '<option disabled>No hotels found</option>';
+                                        }
+                                        mysqli_free_result($result);
+                                        ?>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
                                             <label for="category">Category:</label>
                                             <select id="category" name="category">
-                                                <option value="economy">Economy</option>
+                                                <option value="disabled">Select Category</option>
+                                                <option value="deluxe">Deluxe</option>
+                                                <option value="premium">Premium</option>
+                                                <option value="superior">Superior</option>
+                                                <option value="suite">Suite</option>
+                                                <!-- <option value="economy">Economy</option>
                                                 <option value="standard">Standard</option>
-                                                <option value="luxury">Luxury</option>
+                                                <option value="luxury">Luxury</option> -->
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
@@ -109,8 +148,8 @@ include("./incluede/header.php") ?>
                                             <label for="checkinDate">Check-in Date:</label>
                                             <input type="date" id="checkinDate" name="checkinDate">
                                         </div>
-                                        <p id="addRowBtn">Add</p>
-                                        <div class="" id="formContainer"></div>
+                                        <!-- <p id="addRowBtn">Add</p>
+                                        <div class="" id="formContainer"></div> -->
                                     </div>
                                     <div class="d-flex justify-content-center manish">
                                         <div class="form-row mx-1 ">
@@ -141,8 +180,8 @@ include("./incluede/header.php") ?>
                                             <label for="checkinDate">Check-in Date:</label>
                                             <input type="date" id="checkinDate" name="checkinDate">
                                         </div>
-                                        <p id="addRowBtn">Add</p>
-                                        <div class="" id="formContainer"></div>
+                                        <!-- <p id="addRowBtn">Add</p>
+                                        <div class="" id="formContainer"></div> -->
                                     </div>
                                     <div class="d-flex justify-content-center ">
                                         <div class="form-row mx-1 ">
@@ -182,8 +221,9 @@ include("./incluede/header.php") ?>
                                         <td><input type="text" name="remarks"><br></td>
                                     </tr>
                                     <tr class="p-3">
-                                        <th>Total THB:<th>
-                                        <!-- <td>12334</td> -->
+                                        <th>Total THB:
+                                        <th>
+                                            <!-- <td>12334</td> -->
 
                                     </tr>
                                     <tr>

@@ -162,7 +162,7 @@
             </a>
             <ul class="sidebar-sub-nav collapse" id="examp">
              <li class="sidebar-nav-item">
-                <a href="../default/hotel_category_add" class="sidebar-nav-link">
+                <a href="../default/hotel_category_all" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     <i data-feather="plus-circle"></i>
                   </span>

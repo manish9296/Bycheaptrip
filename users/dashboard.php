@@ -4,10 +4,11 @@ session_start();
 if (($_SESSION["usersID"] == "")) {
   header("Location:../index");
 }
-
 ?>
+
 <?php include('header.php'); ?>
 <?php include('sidebar.php'); ?>
+
     <main id="main" class="main">
         <div class="pagetitle">
             <h1>Dashboard</h1>
