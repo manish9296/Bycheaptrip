@@ -1,5 +1,5 @@
 <?php
-include "../connection.php";
+include "../../connection.php";
 session_start();
 if (!isset($_SESSION["userid"])) {
     header("Location:../index");
@@ -97,11 +97,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <input type="text" class="form-control" id="category_name" aria-describedby="name" placeholder="Enter Transport Details " name="transport_name">
                                     <p id="categoryNameError" class="error text-danger"></p>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label class="form-label" for=" category hotel">Price</label>
                                     <input type="text" class="form-control" id="prices" aria-describedby="name" placeholder="Enter Transport Price" name="prices">
                                     <p id="pricesError" class="error text-danger"></p>
-                                </div>
+                                </div> -->
                                 <button type="submit" class="btn btn-sm btn-block btn-primary" name="submit">Submit</button>
                             </form>
                         </div>

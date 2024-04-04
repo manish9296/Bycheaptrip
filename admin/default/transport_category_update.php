@@ -27,6 +27,10 @@ include("./incluede/header.php") ?>
     }
 </style>
 <?php
+// Assuming you have already established a database connection
+// $conn = mysqli_connect("localhost", "username", "password", "database");
+
+// Function to sanitize input
 function sanitize_input($conn, $data)
 {
     $data = trim($data);
@@ -35,32 +39,28 @@ function sanitize_input($conn, $data)
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    $hcategory_id = $_POST['hcategory_id'];
-    $category_name = sanitize_input($conn, $_POST['category_name']);
-    $hc_id = sanitize_input($conn, $_POST['hc_id']);
+    $transport_cat_id = $_POST['transport_cat_id'];
+    $transport_category = sanitize_input($conn, $_POST['transport_category']);
+    $transref_id = sanitize_input($conn, $_POST['transref_id']);
     $prices= sanitize_input($conn, $_POST['prices']);
-
-    // Perform input validation here if needed
-
-    // Update the hotel in the database
-    $update_query = "UPDATE hotel_categories SET category_name = '$category_name',prices = '$prices', hc_id = '$hc_id' WHERE hcategory_id = $hcategory_id";
+    $update_query = "UPDATE transport_category SET transport_category = '$transport_category',prices = '$prices', transref_id = '$transref_id' WHERE transport_cat_id = $transport_cat_id";
     if (mysqli_query($conn, $update_query)) {
         echo "<script>alert(' updated successfully.');
-        window.location.href = 'hotel_category_all';
+        window.location.href = 'transport_category_all';
         </script>";
     } else {
         echo "Error: " . mysqli_error($conn);
     }
-} elseif (isset($_GET['hcategory_id'])) {
-    $hcategory_id = $_GET['hcategory_id'];
+} elseif (isset($_GET['transport_cat_id'])) {
+    $transport_cat_id = $_GET['transport_cat_id'];
 
     // Retrieve hotel details from the database
-    $query = "SELECT * FROM hotel_categories WHERE hcategory_id = $hcategory_id";
+    $query = "SELECT * FROM transport_category WHERE transport_cat_id = $transport_cat_id";
     $result = mysqli_query($conn, $query);
     $hotel = mysqli_fetch_assoc($result);
     mysqli_free_result($result);
 } else {
-    header("Location: hotel_category_all");
+    header("Location: transport_category_all");
     exit;
 }
 ?>
@@ -75,18 +75,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                     <div class="card mb-grid">
                         <div class="card-body collapse show" id="card1">
                             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                                <input type="hidden" name="hcategory_id" value="<?php echo $hotel['hcategory_id']; ?>">
+                                <input type="hidden" name="transport_cat_id" value="<?php echo $hotel['transport_cat_id']; ?>">
                                 <div class="form-group">
-                                    <label class="form-label" for="hotel_name">Hotel Name</label>
-                                    <select class="form-control" id="city_id" name="hc_id">
-                                        <option value="disabled">Select Hotel</option>
+                                    <label class="form-label" for="hotel_name">Transport Datails</label>
+                                    <select class="form-control" id="city_id" name="transref_id">
+                                        <option value="disabled">Select Transport</option>
                                         <?php
-                                        $query = "SELECT * FROM hotels";
+                                        $query = "SELECT * FROM transport";
                                         $result = mysqli_query($conn, $query);
                                         if ($result && mysqli_num_rows($result) > 0) {
                                             while ($row = mysqli_fetch_assoc($result)) {
-                                                $selected = ($row['hotel_id'] == $hotel['hc_id']) ? 'selected' : '';
-                                                echo "<option value='" . $row['hotel_id'] . "' $selected>" . $row['hotel_name'] . "</option>";
+                                                $selected = ($row['trans_id'] == $hotel['transref_id']) ? 'selected' : '';
+                                                echo "<option value='" . $row['trans_id'] . "' $selected>" . $row['transport_name'] . "</option>";
                                             }
                                         }
                                         mysqli_free_result($result);
@@ -94,8 +94,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" for="hotel name">Hotel Name</label>
-                                    <input type="text" class="form-control" id="hotel_name" aria-describedby="name" placeholder="Enter Category Name" name="category_name" value="<?php echo htmlspecialchars($hotel['category_name']); ?>">
+                                    <label class="form-label" for="hotel name">Transport Details</label>
+                                    <input type="text" class="form-control" id="transport_name" aria-describedby="name" placeholder="Enter Category Name" name="transport_category" value="<?php echo htmlspecialchars($hotel['transport_category']); ?>">
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" for="hotel name">Hotel Name</label>

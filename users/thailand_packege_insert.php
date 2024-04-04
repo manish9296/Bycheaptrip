@@ -6,7 +6,6 @@ mysqli_begin_transaction($conn);
 
 try {
     // Insert data into thailand_customer table
-    
     $random_number = "BCT" . str_pad(mt_rand(1, 999999), 6, '0', STR_PAD_LEFT);
     $customer_name = mysqli_real_escape_string($conn, $_POST['customer_name']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);

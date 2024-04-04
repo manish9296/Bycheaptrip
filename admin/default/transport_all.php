@@ -1,5 +1,5 @@
 <?php
-include "../connection.php";
+include "../../connection.php";
 session_start();
 if (!isset($_SESSION["userid"])) {
     header("Location:../index");
@@ -60,7 +60,7 @@ include("./incluede/header.php") ?>
 
                                             <td><?php echo $row['city_name'] ?></td>
                                             <td><?php echo $row['transport_name'] ?></td>
-                                            <td><?php echo $row['prices'] ?></td>
+                                            <!-- <td><?php echo $row['prices'] ?></td> -->
                                             <td>
                                                 <a href="transport_add"><button type="button" class="btn btn-primary waves-effect waves-light add">Add</button></a>
                                                <a href="transport_update?trans_id=<?php echo $row['trans_id']; ?>"><button type="button" class="btn btn-primary waves-effect waves-light add">Update</button></a>

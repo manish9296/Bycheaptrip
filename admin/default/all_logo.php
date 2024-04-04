@@ -1,5 +1,5 @@
 <?php
- include "../connection.php";   
+include "../../connection.php";  
     session_start();
     if (!isset($_SESSION["userid"]))
     {
@@ -12,11 +12,9 @@
         <div class="adminx-main-content">
           <div class="container-fluid">
             <!-- BreadCrumb -->
-
             <div class="pb-3">
               <h1><b><i>Company Logo</i></b></h1>
             </div>
-
             <div class="row">
               <div class="col">
                 <div class="card mb-grid">

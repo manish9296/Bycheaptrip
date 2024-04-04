@@ -1,5 +1,5 @@
 <?php
-include "../connection.php";
+include "../../connection.php";
 session_start();
 if (!isset($_SESSION["userid"])) {
     header("Location:../index");
@@ -95,10 +95,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
                                     <label class="form-label" for="trans name">Transport Details </label>
                                     <input type="text" class="form-control" id="trans_name" aria-describedby="name" placeholder="Enter transport Datails" name="transport_name" value="<?php echo htmlspecialchars($trans['transport_name']); ?>" required>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label class="form-label" for="trans name">Prices Details </label>
                                     <input type="text" class="form-control" id="prices" aria-describedby="name" placeholder="Enter prices Datails" name="prices" value="<?php echo htmlspecialchars($trans['prices']); ?>" required>
-                                </div>
+                                </div> -->
                                 <button type="submit" class="btn btn-sm btn-block btn-primary" name="submit">Upadte</button>
                             </form>
                         </div>

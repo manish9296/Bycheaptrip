@@ -5,7 +5,7 @@ if (!isset($_SESSION["userid"])) {
     header("Location:../index");
 }
 ?>
-<?php $page = "users";
+<?php $page = "setting";
 include("./incluede/header.php") ?>
 <!-- Main Content -->
 <div class="adminx-content">
@@ -13,7 +13,7 @@ include("./incluede/header.php") ?>
         <div class="container-fluid">
             <!-- BreadCrumb -->
             <div class="pb-3">
-                <h1><b><i> Pending All Users</i></b></h1>
+                <h1><b><i>Transport Category & Packages Details</i></b></h1>
             </div>
             <div class="row">
                 <div class="col">
@@ -33,20 +33,21 @@ include("./incluede/header.php") ?>
                                         </th>
                                         <!-- <th scope="col">#</th> -->
                                         <th scope="col">#</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Gender</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Phone</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Feedback</th>
+                                        <th scope="col">City</th>
+                                        <th scope="col">Transport</th>
+                                        <th scope="col">Transport Package</th>
+                                        <th scope="col">Transport Prices</th>
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $query = "SELECT *
-                                    FROM users WHERE status='pending'";
+                                    $query = "SELECT transport.trans_id, transport.transport_name, cities.city_name,transport_category.transport_cat_id, transport_category.transport_category, transport_category.prices
+          FROM transport
+          JOIN cities ON transport.tcity_id = cities.city_id
+          JOIN transport_category ON transport.trans_id = transport_category.transref_id
+          ORDER BY cities.city_name ASC";
+
                                     $res = mysqli_query($conn, $query);
                                     $a = 1;
                                     while ($row = mysqli_fetch_assoc($res)) {
@@ -59,17 +60,15 @@ include("./incluede/header.php") ?>
                                                 </label>
                                             </th>
                                             <td><?php echo $a ?></td>
-                                            <td><?php echo date('d M Y', strtotime($row['created_at'])) ?></td>
-                                            <td><?php echo $row['name'] ?></td>
-                                            <td><?php echo $row['gender'] ?></td>
-                                            <td><?php echo $row['email'] ?></td>
-                                            <td><?php echo $row['phone'] ?></td>
-                                            <td ><?php echo $row['status'] ?></td> 
-                                            <td ><?php echo $row['feedback'] ?></td> 
-                                            </td>
+
+                                            <td><?php echo $row['city_name'] ?></td>
+                                            <td><?php echo $row['transport_name'] ?></td>
+                                            <td><?php echo $row['transport_category'] ?></td>
+                                            <td><?php echo $row['prices'] ?></td>
+                                            <!-- <td><?php echo $row['hcategory_id'] ?></td> -->
                                             <td>
-                                                <!-- <a href="transport_add"><button type="button" class="btn btn-primary waves-effect waves-light add"></button></a> -->
-                                               <a href="users_update?id=<?php echo $row['id']; ?>"><button type="button" class="btn btn-primary waves-effect waves-light add">Update</button></a>
+                                                <a href="transport_category"><button type="button" class="btn btn-primary waves-effect waves-light add">Add</button></a>
+                                                <a href="transport_category_update?transport_cat_id=<?php echo $row['transport_cat_id']; ?>"><button type="button" class="btn btn-primary waves-effect waves-light add">Update</button></a>
                                             </td>
                                         <tr>
                                         <?php
@@ -77,4 +76,3 @@ include("./incluede/header.php") ?>
                                     }
                                         ?>
                                         <?php include("./incluede/footer.php") ?>
-                                        

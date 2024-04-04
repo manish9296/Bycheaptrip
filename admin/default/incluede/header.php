@@ -225,6 +225,43 @@
               </li> -->
             </ul>
           </li>
+          <li class="sidebar-nav-item">
+            <a class=" sidebar-nav-link <?php if ($page == 'transport') {
+                                          echo 'active';
+                                        } ?> collapsed" data-toggle="collapse" href="#exa_team89" aria-expanded="false" aria-controls="exa_team89">
+              <span class="sidebar-nav-icon">
+                <i data-feather="users"></i>
+              </span>
+              <span class="sidebar-nav-name">
+                Transport Category
+              </span>
+              <span class="sidebar-nav-end">
+                <i data-feather="chevron-right" class="nav-collapse-icon"></i>
+              </span>
+            </a>
+            <ul class="sidebar-sub-nav collapse" id="exa_team89">
+              <li class="sidebar-nav-item">
+                <a href="../default/transport_category_all" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    <i data-feather="plus-circle"></i>
+                  </span>
+                  <span class="sidebar-nav-name">
+                    Transport Category
+                  </span>
+                </a>
+              </li>
+              <!-- <li class="sidebar-nav-item">
+                <a href="../default/all_team" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    <i data-feather="edit-3"></i>
+                  </span>
+                  <span class="sidebar-nav-name">
+                    All Team
+                  </span>
+                </a>
+              </li> -->
+            </ul>
+          </li>
           <!-- part donate end -->
           <li class="sidebar-nav-item">
             <a class=" sidebar-nav-link <?php if ($page == 'transport') {

@@ -168,14 +168,14 @@
                     </a>
                 </li>
                 <li>
-                    <a href="icons-remix.html">
-                        <i class="bi bi-circle"></i><span>Remix Icons</span>
+                    <a href="thailand_package">
+                        <i class="bi bi-circle"></i><span>Show Tour Package</span>
                     </a>
                 </li>
                 <li>
-                    <a href="icons-boxicons.html">
+                    <!-- <a href="icons-boxicons.html">
                         <i class="bi bi-circle"></i><span>Boxicons</span>
-                    </a>
+                    </a> -->
                 </li>
             </ul>
         </li>

@@ -28,23 +28,23 @@ include("./incluede/header.php") ?>
 </style>
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $hc_id = isset($_POST['hc_id']) ? $_POST['hc_id'] : '';
-    $category_name = isset($_POST['category_name']) ? $_POST['category_name'] : '';
+    $transref_id = isset($_POST['transref_id']) ? $_POST['transref_id'] : '';
+    $transport_category = isset($_POST['transport_category']) ? $_POST['transport_category'] : '';
     $prices = isset($_POST['prices']) ? $_POST['prices'] : '';
     $errors = [];
-    if ($hc_id == 'disabled') {
-        $errors[] = "Please select a hotel.";
+    if ($transref_id == 'disabled') {
+        $errors[] = "Please select a transport.";
     }
-    // if (empty($category_name)) {
+    // if (empty($transport_category)) {
     //     $errors[] = "Category name is required.";
     // }
     // if (empty($prices)) {
     //     $errors[] = "Price is required.";
     // }
     if (empty($errors)) {
-    $query = "INSERT INTO hotel_categories (hc_id,category_name,prices) VALUES (?, ?, ?)";
+    $query = "INSERT INTO transport_category (transref_id,transport_category,prices) VALUES (?, ?, ?)";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "iss", $hc_id, $category_name, $prices);
+    mysqli_stmt_bind_param($stmt, "iss", $transref_id, $transport_category, $prices);
 
     if (mysqli_stmt_execute($stmt)) {
         echo "<script>alert('Data inserted successfully.');</script>";
@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="adminx-main-content">
         <div class="container-fluid">
             <div class="pb-3">
-                <h1><b><i>Hotel Details</i></b></h1>
+                <h1><b><i>Transport Category Details</i></b></h1>
             </div>
             <div class="row">
                 <div class="col-lg-6">
@@ -72,35 +72,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="card-body collapse show" id="card1">
                             <form id="yourFormId" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                                 <div class="form-group">
-                                    <label class="form-label" for="">Hotel Name</label>
-                                    <select class="form-control" id="hc_id" name="hc_id">
-                                        <option value="disabled">Select Hotel</option>
+                                    <label class="form-label" for="">Transport Name</label>
+                                    <select class="form-control" id="transref_id" name="transref_id">
+                                        <option value="disabled">Select Transport</option>
                                         <?php
-                                        $query = "SELECT * FROM hotels";
+                                        $query = "SELECT * FROM transport";
                                         $result = mysqli_query($conn, $query);
                                         if ($result && mysqli_num_rows($result) > 0) {
                                             while ($row = mysqli_fetch_assoc($result)) {
                                         ?>
-                                                <option value="<?php echo $row['hotel_id']; ?>">
-                                                    <?php echo $row['hotel_name']; ?></option>
+                                                <option value="<?php echo $row['trans_id']; ?>">
+                                                    <?php echo $row['transport_name']; ?></option>
 
                                         <?php
                                             }
                                         } else {
-                                            echo '<option disabled>No hotels found</option>';
+                                            echo '<option disabled>No transport found</option>';
                                         }
                                         mysqli_free_result($result);
                                         ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" for="category hotel">Category Hotel</label>
-                                    <input type="text" class="form-control" id="category_name" aria-describedby="name" placeholder="Enter Category Hotel" name="category_name">
+                                    <label class="form-label" for="category hotel">Category Transport</label>
+                                    <input type="text" class="form-control" id="category_name" aria-describedby="name" placeholder="Enter Transport Category" name="transport_category">
                                     <p id="categoryNameError" class="error text-danger"></p>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label" for=" category hotel">Hotel Price</label>
-                                    <input type="text" class="form-control" id="prices" aria-describedby="name" placeholder="Enter Hotel Price" name="prices">
+                                    <label class="form-label" for=" category hotel">Transport Price</label>
+                                    <input type="text" class="form-control" id="prices" aria-describedby="name" placeholder="Enter Price" name="prices">
                                     <p id="pricesError" class="error text-danger"></p>
                                 </div>
                                 <button type="submit" class="btn btn-sm btn-block btn-primary" name="submit">Submit</button>
@@ -111,16 +111,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                
 <script>
     document.getElementById('yourFormId').addEventListener('submit', function(event) {
-        var hc_id = document.getElementById('hc_id').value;
+        var transref_id = document.getElementById('transref_id').value;
         var category_name = document.getElementById('category_name').value;
         var prices = document.getElementById('prices').value;
         var errors = [];
 
-        if (hc_id === 'disabled') {
-            errors.push("Please select a hotel.");
+        if (transref_id === 'disabled') {
+            errors.push("Please select a Transport Category.");
         }
         if (!category_name.trim()) {
-            errors.push("Hotel Category name is required.");
+            errors.push("Transport Category name is required.");
             document.getElementById('categoryNameError').textContent = "Category name is required.";
         } else {
             document.getElementById('categoryNameError').textContent = "";
