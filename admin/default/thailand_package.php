@@ -45,15 +45,20 @@ include("./incluede/header.php") ?>
                               <span class="custom-control-indicator"></span>
                             </label>
                           </th>
+                          <!-- <th scope="col">First Name</th>
+                          <th scope="col">Last Name</th>
+                          <th scope="col">Username</th>
+                          <th scope="col">Roles</th>
+                          <th scope="col">Actions</th> -->
                           <th scope="col">#</th>
                           <th scope="col">Reff#</th>
                           <th scope="col">Username</th>
-                          <th scope="col">Name</th>
+                          <!-- <th scope="col">Name</th>
                           <th scope="col">Account Manager</th>
                           <th scope="col">PAX</th>
                           <th scope="col">Pakage INR</th>
                           <th scope="col">Travels Date</th>
-                          <th scope="col">Create Date</th>
+                          <th scope="col">Create Date</th> -->
                           <th scope="col">Status</th>
                           <th scope="col">Actions</th>
                         </tr>
@@ -66,21 +71,15 @@ include("./incluede/header.php") ?>
                               <span class="custom-control-indicator"></span>
                             </label>
                           </th>
-                          <td>1</td>
-                          <td>BCT65899</td>
-                          <td>manish@gmail.com</td>
-                          <td>manish</td>
-                          <td>Satyam</td>
-                          <td>5</td>
-                          <td>15000</td>
-                          <td>15-08-2024</td>
-                          <td>15-08-2024</td>
+                          <td>Mark</td>
+                          <td>Otto</td>
+                          <td>@mdo</td>
                           <td>
                             <span class="badge badge-pill badge-primary">Admin</span>
                           </td>
                           <td>
-                            <button class="btn btn-sm btn-primary">Show</button>
-                            <button class="btn btn-sm btn-danger">Update</button>
+                            <button class="btn btn-sm btn-primary">Edit</button>
+                            <button class="btn btn-sm btn-danger">Delete</button>
                           </td>
                         </tr>
                       </tbody>

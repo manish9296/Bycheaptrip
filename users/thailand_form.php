@@ -52,7 +52,7 @@ if (($_SESSION["usersID"] == "")) {
                             </div>
                             <div class="col-md-6">
                                 <select class="form-control" name="pax" id="pax">
-                                    <option value="disabled" selected>Select Of Pax</option>
+                                    <option value="" disabled>Select Of Pax</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
